@@ -6,4 +6,5 @@ fn main() {
     slice_test::main();
     struct_test::main();
     reference_test::main();
+    panic!("Here")
 }

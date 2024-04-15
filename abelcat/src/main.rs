@@ -9,10 +9,14 @@ fn print_separator() {
 
 
 struct Tester { pub x : i32, }
+#[derive(Clone)] // No copy for a type with drop
+struct Copyer { pub x : i32, }
 
 fn drop_test() {
     let _x = Tester { x: 10 };
     let _y = _x;
+    let _z = Copyer { x: 20 };
+    let _w = _z.clone();
 }
 
 fn main() {
@@ -41,5 +45,11 @@ fn main() {
 impl Drop for Tester {
     fn drop(&mut self) {
         println!("Dropping Tester with x = {}", self.x);
+    }
+}
+
+impl Drop for Copyer {
+    fn drop(&mut self) {
+        println!("Dropping Copyer with x = {}", self.x);
     }
 }

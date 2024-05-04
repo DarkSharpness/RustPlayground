@@ -2,6 +2,7 @@ mod slice_test;
 mod struct_test;
 mod reference_test;
 mod array_test;
+mod trait_test;
 
 fn print_separator() {
     println!("--------------------------------------------------");
@@ -20,6 +21,10 @@ fn drop_test() {
 }
 
 fn main() {
+    trait_test::main();
+
+    print_separator();
+
     drop_test();
 
     print_separator();

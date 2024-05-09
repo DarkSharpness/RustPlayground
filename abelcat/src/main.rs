@@ -3,6 +3,7 @@ mod struct_test;
 mod reference_test;
 mod array_test;
 mod trait_test;
+mod bit_test;
 
 fn print_separator() {
     println!("--------------------------------------------------");
@@ -21,6 +22,8 @@ fn drop_test() {
 }
 
 fn main() {
+    bit_test::main();
+
     trait_test::main();
 
     print_separator();

@@ -25,4 +25,26 @@ pub fn main() {
 
     println!("{}", str.demo());
     println!("{}", int.demo());
+
+    let str = test_str();
+    let int = test_int();
+
+    unsafe { STR.data = "World".to_string() };
+    unsafe { INT.data = 114514 };
+
+    println!("{}", unsafe { (*str).demo() });
+    println!("{}", unsafe { (*int).demo() });
+}
+
+static mut STR : MyStr = MyStr { data: String::new() };
+static mut INT : MyInt = MyInt { data: 123 };
+
+#[allow(static_mut_refs)]
+fn test_str() -> *mut dyn DemoTrait {
+    return unsafe { &mut STR };
+}
+
+#[allow(static_mut_refs)]
+fn test_int() -> *mut dyn DemoTrait {
+    return unsafe { &mut INT };
 }

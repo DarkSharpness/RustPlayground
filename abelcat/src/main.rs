@@ -4,6 +4,7 @@ mod reference_test;
 mod array_test;
 mod trait_test;
 mod bit_test;
+mod btree_test;
 
 fn print_separator() {
     println!("--------------------------------------------------");
@@ -22,6 +23,10 @@ fn drop_test() {
 }
 
 fn main() {
+    btree_test::main();
+
+    print_separator();
+
     bit_test::main();
 
     trait_test::main();
